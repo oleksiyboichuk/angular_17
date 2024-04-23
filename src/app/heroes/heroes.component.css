@@ -1,0 +1,13 @@
+.hero-block {
+	display: flex;
+	align-items: baseline;
+}
+
+.heroes {
+	list-style: none;
+}
+
+.selected {
+	background-color: black;
+	color: white;
+}

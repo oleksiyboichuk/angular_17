@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Hero } from '../hero';
 import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 import { HeroService } from '../hero.service';
+import {RouterLink} from "@angular/router";
 
 
 @Component({
@@ -13,6 +14,7 @@ import { HeroService } from '../hero.service';
     HeroDetailComponent,
     CommonModule,
     FormsModule,
+    RouterLink
   ],
   templateUrl: './heroes.component.html',
   styleUrl: './heroes.component.css'

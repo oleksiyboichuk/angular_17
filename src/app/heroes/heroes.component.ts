@@ -14,8 +14,6 @@ import { MessageService } from '../message.service';
     HeroDetailComponent,
     CommonModule,
     FormsModule,
-    NgFor,
-    NgIf
   ],
   templateUrl: './heroes.component.html',
   styleUrl: './heroes.component.css'

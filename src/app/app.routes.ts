@@ -9,18 +9,18 @@ export const routes: Routes = [
 
   {
     path: 'heroes',
-    loadComponent: () => import('./heroes/heroes.component')
+    loadComponent: () => import('./features/hero/heroes.component')
       .then(c => c.HeroesComponent)
   },
 
   {
     path: 'dashboard',
-    loadComponent: () => import('./dashboard/dashboard.component')
+    loadComponent: () => import('./features/dashboard/dashboard.component')
       .then(c => c.DashboardComponent)
   },
 
   {
     path: 'detail/:id',
-    loadComponent: () => import('./hero-detail/hero-detail.component')
+    loadComponent: () => import('./features/hero/components/hero-detail/hero-detail.component')
       .then(c => c.HeroDetailComponent) },
 ];

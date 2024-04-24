@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Hero } from '../hero';
-import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
-import { HeroService } from '../hero.service';
+import { HeroModel } from './models/hero.model';
+import { HeroDetailComponent } from './components/hero-detail/hero-detail.component';
+import { HeroService } from './services/hero.service';
 import {RouterLink} from "@angular/router";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @Component({
@@ -12,6 +13,7 @@ import {RouterLink} from "@angular/router";
   standalone: true,
   imports: [
     HeroDetailComponent,
+    HttpClientModule,
     CommonModule,
     FormsModule,
     RouterLink
@@ -20,7 +22,7 @@ import {RouterLink} from "@angular/router";
   styleUrl: './heroes.component.css'
 })
 export class HeroesComponent implements OnInit {
-  heroes: Hero[] = [];
+  heroes: HeroModel[] = [];
 
   constructor(private heroService: HeroService) { }
 
@@ -31,5 +33,19 @@ export class HeroesComponent implements OnInit {
   getHeroes(): void {
     this.heroService.getHeroes()
       .subscribe(heroes => this.heroes = heroes);
+  }
+
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.heroService.addHero({ name } as HeroModel)
+      .subscribe(hero => {
+        this.heroes.push(hero);
+      });
+  }
+
+  delete(hero: HeroModel): void {
+    this.heroes = this.heroes.filter(h => h !== hero);
+    this.heroService.deleteHero(hero.id).subscribe();
   }
 }

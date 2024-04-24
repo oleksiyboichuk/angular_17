@@ -17,7 +17,7 @@ import {InMemoryDataService} from "./in-memory-data.service";
     RouterOutlet,
     RouterLink,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule(
+    HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     )
   ],
